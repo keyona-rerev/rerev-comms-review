@@ -1,0 +1,52 @@
+{
+  "initiatives": [
+    {
+      "id": "INI-RR-001",
+      "name": "ReRev Labs Consulting Pipeline",
+      "status": "Active",
+      "priority": "Critical",
+      "goal": "Build a consistent inbound pipeline for AI consulting engagements. Target: 2-3 active clients at any given time generating $3K-$10K/month in retainer or project revenue.",
+      "core_question": "What is the fastest path from warm contact to signed consulting engagement, and how do we systematize it?",
+      "timeline": "Ongoing — Q2 2026 sprint",
+      "notes": "Primary revenue engine for ReRev Labs. Focus outreach on small business owners and founders who have already expressed interest in AI but haven't operationalized it.",
+      "contentFormats": [],
+      "linked_campaigns": []
+    },
+    {
+      "id": "INI-RR-002",
+      "name": "Workshop Distribution",
+      "status": "Active",
+      "priority": "High",
+      "goal": "Get ReRev Labs AI workshops into corporate, university, and accelerator calendars. Target: 1 paid workshop per month by end of Q2 2026.",
+      "core_question": "Who are the 10 buyers who could say yes in the next 60 days, and what do they need to see first?",
+      "timeline": "Q2-Q3 2026",
+      "notes": "Workshop product is ready. The constraint is distribution. Referral partners (accelerators, incubators, HBCUs) are faster than direct outreach to HR buyers.",
+      "contentFormats": [],
+      "linked_campaigns": []
+    },
+    {
+      "id": "INI-RR-003",
+      "name": "Speaking Circuit 2026",
+      "status": "Planning",
+      "priority": "High",
+      "goal": "Secure 6-8 speaking engagements in 2026. Mix of paid keynotes, panels, and ecosystem stages. Build email list and inbound pipeline through stage visibility.",
+      "core_question": "What is the one talk that positions Keyona as the humanist AI voice that conference organizers can't find anywhere else?",
+      "timeline": "Q2-Q4 2026",
+      "notes": "Keyona's humanist + AI angle is genuinely differentiated. The constraint is proactive pitching — most bookings require a speaker kit and a targeted pitch, not just a LinkedIn bio.",
+      "contentFormats": [],
+      "linked_campaigns": []
+    },
+    {
+      "id": "INI-RR-004",
+      "name": "ReRev Labs Content Engine",
+      "status": "Planning",
+      "priority": "Medium",
+      "goal": "Establish a lightweight content cadence that builds authority without becoming a full-time content job. Focus on LinkedIn and email newsletter as the two channels.",
+      "core_question": "What content can Keyona produce in 2 hours per week that builds the ReRev Labs brand and generates inbound?",
+      "timeline": "Q2 2026 start",
+      "notes": "Content is currently ad hoc. The goal is a repeatable system: one LinkedIn post per week, one newsletter per month. Quality over volume.",
+      "contentFormats": [],
+      "linked_campaigns": []
+    }
+  ]
+}
