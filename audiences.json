@@ -1,0 +1,64 @@
+{
+  "audiences": [
+    {
+      "id": "ai-consulting-prospects",
+      "name": "AI consulting prospects",
+      "segment": "Buyer",
+      "targetTitles": ["CEO", "COO", "Founder", "VP Operations", "Director of Innovation", "CTO"],
+      "sector": "Small to mid-size business / professional services",
+      "geo": "US (Southeast + national)",
+      "whyTheyMatter": "These are the primary buyers of ReRev Labs consulting and automation engagements. They know AI exists but don't know how to operationalize it. Keyona is the guide who bridges that gap.",
+      "angle": "Lead with outcomes, not tools. The angle is time savings, revenue protection, and competitive positioning — not 'I'll show you how ChatGPT works.'",
+      "campaigns": [],
+      "sc_contact_ids": []
+    },
+    {
+      "id": "workshop-leads",
+      "name": "Workshop and training leads",
+      "segment": "Buyer",
+      "targetTitles": ["HR Director", "L&D Manager", "Chief People Officer", "Program Director", "Dean", "Department Chair"],
+      "sector": "Corporate / higher ed / nonprofit",
+      "geo": "US",
+      "whyTheyMatter": "Workshop buyers fund ReRev's highest-margin product. A single corporate or university engagement can generate $5K-$25K. They're also the fastest path to recurring revenue through team licenses or follow-on consulting.",
+      "angle": "Position workshops as the thing that gets buy-in from skeptical teams. Not AI hype — practical literacy with a live facilitator who has credibility.",
+      "campaigns": [],
+      "sc_contact_ids": []
+    },
+    {
+      "id": "speaking-opportunities",
+      "name": "Speaking and panel organizers",
+      "segment": "Partner / Platform",
+      "targetTitles": ["Event Director", "Program Chair", "Conference Producer", "Community Manager", "Executive Director"],
+      "sector": "Tech / entrepreneurship / DEI / education",
+      "geo": "US (national + key markets: Birmingham, Atlanta, NYC, Chicago)",
+      "whyTheyMatter": "Speaking is the top-of-funnel engine. One good stage builds the email list, drives inbound consulting leads, and signals authority. Keyona's positioning as a humanist building with AI is a differentiated angle that conference organizers are actively looking for.",
+      "angle": "Pitch the talk as a counternarrative — not 'AI will take your job' and not 'AI is everything.' The angle is how humans stay centered when the tools accelerate.",
+      "campaigns": [],
+      "sc_contact_ids": []
+    },
+    {
+      "id": "automation-buyers",
+      "name": "Automation and workflow buyers",
+      "segment": "Buyer",
+      "targetTitles": ["Operations Manager", "Founder", "COO", "Chief of Staff", "Head of Growth"],
+      "sector": "Services / agency / real estate / finance / healthcare admin",
+      "geo": "US",
+      "whyTheyMatter": "These buyers have already decided they want automation — they just need someone to build it. ReRev Labs is the implementation partner for teams that want Make, n8n, or custom AI workflows but don't have the internal capacity.",
+      "angle": "Lead with the process audit. Show them what's automatable before proposing a solution. The trust-builder is the diagnosis, not the pitch.",
+      "campaigns": [],
+      "sc_contact_ids": []
+    },
+    {
+      "id": "ecosystem-connectors",
+      "name": "Ecosystem connectors and referral partners",
+      "segment": "Connector",
+      "targetTitles": ["Accelerator Director", "Incubator Manager", "Ecosystem Lead", "Community Builder", "Founder in Residence"],
+      "sector": "Startup / entrepreneurship / HBCU / DEI tech",
+      "geo": "US (Birmingham, Atlanta, national)",
+      "whyTheyMatter": "These are the people who send Keyona clients. A relationship with one accelerator director can produce 3-5 workshop referrals per year. The play is visibility in the right rooms, not cold outreach.",
+      "angle": "ReRev Labs as the AI partner for founders who are learning to build. Not the enterprise AI vendor — the practical, accessible option that shows up and delivers.",
+      "campaigns": [],
+      "sc_contact_ids": []
+    }
+  ]
+}
