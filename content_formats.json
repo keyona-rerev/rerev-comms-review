@@ -1,0 +1,49 @@
+{
+  "formats": [
+    {
+      "id": "fmt-rr-001",
+      "name": "AI Literacy Workshop",
+      "status": "In Development",
+      "duration": "Half-day (3-4 hrs) or full-day (6-7 hrs)",
+      "valueProp": "Practical AI literacy for teams who need to understand and use AI tools without the hype. Designed for non-technical professionals. Keyona facilitates live, no canned slides.",
+      "contentOutline": [
+        "What AI actually is (and isn't) — cutting through the noise",
+        "Live tool demos with real business use cases",
+        "Where AI breaks and how to catch it",
+        "Building your personal AI workflow",
+        "Q&A and custom use case workshop"
+      ],
+      "coHostAngle": "Can be co-delivered with an internal L&D team or branded for a specific accelerator or institution. Keyona handles facilitation, partner handles logistics and audience."
+    },
+    {
+      "id": "fmt-rr-002",
+      "name": "AI Automation Audit",
+      "status": "In Development",
+      "duration": "2-hour engagement + written report",
+      "valueProp": "A structured process audit that identifies what is and isn't worth automating in a small business or team. Delivers a prioritized roadmap, not a vendor pitch.",
+      "contentOutline": [
+        "90-minute process mapping session",
+        "Automation opportunity scoring by ROI and complexity",
+        "Tool recommendations with honest tradeoffs",
+        "Written report with 3-5 prioritized automation opportunities",
+        "Optional: implementation retainer for top-priority items"
+      ],
+      "coHostAngle": "Positioned as the entry point to a consulting retainer. The audit builds trust and defines the scope before any implementation begins."
+    },
+    {
+      "id": "fmt-rr-003",
+      "name": "Keynote: The Humanist Case for AI",
+      "status": "In Development",
+      "duration": "30-45 min keynote + Q&A",
+      "valueProp": "A talk that centers humans in the AI conversation — not as victims of automation, not as naive optimists, but as the people who decide what these tools are for. Built for conferences that want a counternarrative.",
+      "contentOutline": [
+        "Why both the fear narrative and the hype narrative are missing something",
+        "What it actually means to build with AI as a founder or operator",
+        "The values layer: who decides what AI optimizes for",
+        "Practical: what this means for your team right now",
+        "Q&A"
+      ],
+      "coHostAngle": "Standalone keynote. Pairs well with a panel on AI and the future of work. Keyona brings a perspective that is hard to find: a practitioner who is also a humanist and a deconstructing believer."
+    }
+  ]
+}
