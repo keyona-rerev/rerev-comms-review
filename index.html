@@ -26,13 +26,12 @@
     .tab { padding: 9px 20px; font-size: 13px; color: #4A4A8C; border-radius: 8px 8px 0 0; cursor: pointer; border: 1px solid transparent; border-bottom: none; background: transparent; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
     .tab.active { background: #fff; border-color: #C0C8E8; border-bottom-color: #fff; font-weight: 600; color: #1A1A3E; margin-bottom: -2px; }
     .tab-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
-    .badge-pending    { background: #FDF3DC; color: #7A5200; }
-    .badge-audience   { background: #EDE8F5; color: #5A3A8C; }
-    .badge-info       { background: #F0EEE8; color: #5A5850; }
-    .badge-pipeline   { background: #E8EAF6; color: #2D2A8C; }
-    .badge-reports    { background: #E8EAF6; color: #4A4A8C; }
+    .badge-pending  { background: #FDF3DC; color: #7A5200; }
+    .badge-audience { background: #EDE8F5; color: #5A3A8C; }
+    .badge-info     { background: #F0EEE8; color: #5A5850; }
+    .badge-reports  { background: #E8EAF6; color: #4A4A8C; }
     .badge-initiative { background: #EAE8F5; color: #3A2A8C; }
-    .main { padding: 28px 32px; max-width: 960px; margin: 0 auto; }
+    .main { padding: 28px 32px; max-width: 1060px; margin: 0 auto; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
     .section-label { font-size: 11px; color: #5C4BE8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
@@ -57,8 +56,8 @@
     .draft-toggle { font-size: 12px; color: #2D2A8C; cursor: pointer; font-weight: 600; margin-bottom: 10px; display: inline-block; }
     .draft-toggle:hover { text-decoration: underline; }
     .draft-block { background: #F7F8FC; border: 1px solid #C0C8E8; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: #1A1A3E; line-height: 1.7; white-space: pre-wrap; display: none; margin-bottom: 12px; }
-    .card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn { font-size: 12px; padding: 6px 16px; border-radius: 6px; border: 1px solid; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; }
+    .card-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .btn { font-size: 12px; padding: 6px 16px; border-radius: 6px; border: 1px solid; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; background: none; }
     .btn-view { background: #2D2A8C; color: #fff; border-color: #2D2A8C; }
     .btn-view:hover { background: #1A1A3E; }
     .btn-feedback { background: #E8EAF6; color: #4A4A8C; border-color: #8B84D8; }
@@ -71,9 +70,10 @@
     .pill-approved { background: #EAE8F5; color: #2D2A8C; }
     .pill-rejected { background: #FAEAE6; color: #8B3A1A; }
     .outreach-pill { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.03em; margin-left: 6px; }
-    .outreach-waiting  { background: #EAE8F5; color: #2D2A8C; }
-    .outreach-blocked  { background: #FAEAE6; color: #8B3A1A; }
-    .outreach-move     { background: #FDF3DC; color: #7A5200; }
+    .outreach-waiting { background: #EAE8F5; color: #2D2A8C; }
+    .outreach-blocked { background: #FAEAE6; color: #8B3A1A; }
+    .outreach-move    { background: #FDF3DC; color: #7A5200; }
+    .move-select { font-size: 11px; padding: 3px 8px; border-radius: 6px; border: 1px solid #C0C8E8; background: #F7F8FC; color: #1A1A3E; outline: none; cursor: pointer; }
     .camp-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
     .camp-toolbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .seq-filter { padding: 7px 12px; font-size: 13px; border: 1px solid #C0C8E8; border-radius: 6px; background: #fff; color: #1A1A3E; outline: none; cursor: pointer; }
@@ -106,12 +106,29 @@
     .status-col-move    .status-card { border-color: #E8D8A0; }
     .status-card:last-child { margin-bottom: 0; }
     .status-card-title { font-size: 13px; font-weight: 600; color: #1A1A3E; margin-bottom: 3px; line-height: 1.3; }
-    .status-card-org { font-size: 11px; color: #4A4A8C; margin-bottom: 6px; }
+    .status-card-org { font-size: 11px; color: #4A4A8C; margin-bottom: 8px; }
     .status-card-detail { font-size: 12px; color: #444; line-height: 1.5; border-top: 1px solid #E8EAF6; padding-top: 6px; margin-top: 4px; }
     .status-card-detail strong { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #5C4BE8; margin-bottom: 2px; }
     .status-col-blocked .status-card-detail strong { color: #8B3A1A; }
     .status-col-move    .status-card-detail strong { color: #7A5200; }
     .status-empty { font-size: 12px; color: #8B84D8; text-align: center; padding: 20px 0; font-style: italic; }
+    .list-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; border: 1px solid #C0C8E8; border-radius: 12px; overflow: hidden; }
+    .list-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #4A4A8C; background: #E8EAF6; border-bottom: 1px solid #C0C8E8; white-space: nowrap; }
+    .list-table td { padding: 10px 14px; border-bottom: 1px solid #C8CDE8; vertical-align: middle; color: #1a1a2e; line-height: 1.45; }
+    .list-table tr:last-child td { border-bottom: none; }
+    .list-title-cell { font-weight: 600; font-size: 13px; color: #1A1A3E; }
+    .list-org { font-size: 12px; color: #4A4A8C; margin-top: 2px; }
+    .list-person { font-size: 11px; color: #555; }
+    .list-email { font-size: 11px; color: #2D2A8C; word-break: break-all; }
+    .list-status-select { font-size: 11px; padding: 3px 7px; border-radius: 6px; border: 1px solid #C0C8E8; background: #F7F8FC; color: #1A1A3E; outline: none; cursor: pointer; min-width: 130px; }
+    .ini-list-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; border: 1px solid #C0C8E8; border-radius: 12px; overflow: hidden; }
+    .ini-list-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #4A4A8C; background: #E8EAF6; border-bottom: 1px solid #C0C8E8; white-space: nowrap; }
+    .ini-list-table td { padding: 11px 14px; border-bottom: 1px solid #C8CDE8; vertical-align: top; color: #1a1a2e; line-height: 1.5; font-size: 13px; }
+    .ini-list-table tr:last-child td { border-bottom: none; }
+    .ini-list-table td:first-child { border-left: 4px solid #5C4BE8; padding-left: 10px; }
+    .ini-list-name { font-weight: 600; color: #1A1A3E; }
+    .ini-list-venture { font-size: 11px; color: #4A4A8C; margin-top: 2px; }
+    .ini-list-question { font-size: 11px; color: #555; margin-top: 4px; line-height: 1.5; font-style: italic; }
     .ini-card { background: #fff; border: 1px solid #C0C8E8; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; border-left: 4px solid #5C4BE8; }
     .ini-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
     .ini-name { font-size: 15px; font-weight: 600; color: #1A1A3E; margin-bottom: 3px; }
@@ -156,33 +173,6 @@
     .fmt-outline li { margin-bottom: 3px; }
     .fmt-cohost { font-size: 11px; color: #4A4A8C; background: #E8EAF6; border: 1px solid #C0C8E8; border-radius: 6px; padding: 8px 12px; }
     .ini-id { font-size: 10px; color: #8B84D8; font-family: monospace; margin-top: 10px; }
-    .pipeline-header { background: #fff; border: 1px solid #C0C8E8; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .pipeline-batch-name { font-size: 15px; font-weight: 700; color: #1A1A3E; }
-    .pipeline-statement { font-size: 12px; color: #4A4A8C; margin-top: 3px; }
-    .pipeline-meta { font-size: 12px; color: #4A4A8C; text-align: right; }
-    .pipeline-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
-    @media (max-width: 680px) { .pipeline-board { grid-template-columns: 1fr; } }
-    .pipeline-col { background: #F7F8FC; border: 1px solid #C8CDE8; border-radius: 10px; padding: 14px; min-height: 140px; }
-    .pipeline-col-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-    .pipeline-col-header .col-count { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
-    .col-sourcing .pipeline-col-header { color: #7A5200; }
-    .col-sourcing .col-count { background: #FDF3DC; color: #7A5200; }
-    .col-active .pipeline-col-header { color: #2D2A8C; }
-    .col-active .col-count { background: #EAE8F5; color: #2D2A8C; }
-    .col-nurture .pipeline-col-header { color: #4A4A8C; }
-    .col-nurture .col-count { background: #E8EAF6; color: #4A4A8C; }
-    .pcard { background: #fff; border: 1px solid #C8CDE8; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; }
-    .pcard:last-child { margin-bottom: 0; }
-    .pcard-name { font-size: 13px; font-weight: 600; color: #1A1A3E; margin-bottom: 3px; }
-    .pcard-loc { font-size: 11px; color: #4A4A8C; margin-bottom: 5px; }
-    .pcard-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
-    .pcard-tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; font-weight: 500; }
-    .pcard-tag-type { background: #E8EAF6; color: #4A4A8C; }
-    .pcard-tag-sector { background: #EAE8F5; color: #2D2A8C; }
-    .pcard-tag-conn { background: #EDE8F5; color: #5A3A8C; }
-    .pcard-signals { font-size: 11px; color: #444; line-height: 1.5; border-top: 1px solid #E8EAF6; padding-top: 6px; margin-top: 4px; }
-    .pcard-signals strong { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #5C4BE8; margin-bottom: 2px; }
-    .pcard-empty { font-size: 12px; color: #8B84D8; text-align: center; padding: 20px 0; font-style: italic; }
     .reports-no-data { text-align: center; padding: 56px 20px; color: #4A4A8C; font-size: 14px; }
     .reports-no-data p { margin-top: 8px; font-size: 13px; color: #5C4BE8; }
     .report-block { background: #fff; border: 1px solid #C0C8E8; border-radius: 12px; padding: 22px 24px; margin-bottom: 16px; }
@@ -229,6 +219,7 @@
     .status-planned { background: #FDF3DC; color: #7A5200; }
     .empty-state { text-align: center; padding: 56px 20px; color: #4A4A8C; font-size: 14px; }
     #loading { text-align: center; padding: 60px; color: #5C4BE8; font-size: 14px; }
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1A1A3E; color: #fff; font-size: 13px; padding: 10px 20px; border-radius: 8px; display: none; z-index: 999; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -249,7 +240,6 @@
   <div class="tabs-bar">
     <div class="tab active" onclick="switchTab('campaigns',this)">Campaigns <span class="tab-badge badge-pending" id="count-pending">—</span></div>
     <div class="tab" onclick="switchTab('initiatives',this)">Initiatives <span class="tab-badge badge-initiative" id="count-initiatives">—</span></div>
-    <div class="tab" onclick="switchTab('pipeline',this)">Pipeline <span class="tab-badge badge-pipeline" id="count-pipeline">—</span></div>
     <div class="tab" onclick="switchTab('reports',this)">Weekly Reports <span class="tab-badge badge-reports" id="count-reports">—</span></div>
     <div class="tab" onclick="switchTab('audiences',this)">Audiences <span class="tab-badge badge-audience" id="count-audiences">—</span></div>
     <div class="tab" onclick="switchTab('sysinfo',this)">System Info <span class="tab-badge badge-info">&#9432;</span></div>
@@ -258,12 +248,12 @@
     <div id="loading">Loading...</div>
     <div id="campaigns"   class="tab-content" style="display:none;"></div>
     <div id="initiatives" class="tab-content" style="display:none;"></div>
-    <div id="pipeline"    class="tab-content" style="display:none;"></div>
     <div id="reports"     class="tab-content" style="display:none;"></div>
     <div id="audiences"   class="tab-content" style="display:none;"></div>
     <div id="sysinfo"     class="tab-content" style="display:none;"></div>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 <script>
   const SITE_PASSWORD = 'rerev2026';
   const REPO_RAW   = 'https://raw.githubusercontent.com/keyona-rerev/rerev-comms-review/main';
@@ -272,6 +262,7 @@
   let audView = 'card';
   let campFilter = 'all';
   let campView = 'cards';
+  let iniView = 'cards';
   let allCampaigns = [];
   let allRejections = [];
   let allInitiatives = [];
@@ -279,11 +270,20 @@
   let reportWeeks = [];
   let reportsCache = {};
   let currentReportWeek = null;
+  let statusOverrides = {};
+
+  function showToast(msg, ms) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, ms || 2500);
+  }
 
   function checkPw() {
     if (document.getElementById('pw-input').value === SITE_PASSWORD) {
       document.getElementById('gate').style.display = 'none';
       document.getElementById('app').style.display = 'block';
+      try { const s = localStorage.getItem('rerev_status'); if (s) statusOverrides = JSON.parse(s); } catch(e) {}
       loadData();
     } else {
       document.getElementById('gate-error').style.display = 'block';
@@ -292,21 +292,31 @@
     }
   }
 
+  function moveStatus(campId, newStatus) {
+    if (!newStatus) return;
+    statusOverrides[campId] = newStatus;
+    try { localStorage.setItem('rerev_status', JSON.stringify(statusOverrides)); } catch(e) {}
+    showToast('Status updated to: ' + newStatus);
+    renderCampView();
+  }
+
+  function getEffectiveStatus(camp) {
+    return statusOverrides[camp.id] || camp.outreachStatus;
+  }
+
   async function loadData() {
     try {
       const ts = '?t=' + Date.now();
-      const [campRes, rejRes, audRes, pipeRes, fmtRes, iniRes] = await Promise.all([
+      const [campRes, rejRes, audRes, fmtRes, iniRes] = await Promise.all([
         fetch(REPO_RAW + '/campaigns.json' + ts),
         fetch(REPO_RAW + '/rejections.json' + ts),
         fetch(REPO_RAW + '/audiences.json' + ts),
-        fetch(REPO_RAW + '/pipeline.json' + ts),
         fetch(REPO_RAW + '/content_formats.json' + ts),
         fetch(REPO_RAW + '/initiatives.json' + ts)
       ]);
       const campData = await campRes.json();
       const rejData  = await rejRes.json();
       const audData  = await audRes.json();
-      const pipeData = await pipeRes.json();
       const fmtData  = await fmtRes.json();
       const iniData  = await iniRes.json();
       allCampaigns   = campData.campaigns  || [];
@@ -316,7 +326,7 @@
       window._allInitiatives = allInitiatives;
       window._allFormats     = allFormats;
       reportWeeks = await discoverReportWeeks();
-      render(allCampaigns, allRejections, audData.audiences || [], pipeData, allFormats, allInitiatives);
+      render(allCampaigns, allRejections, audData.audiences || [], allFormats, allInitiatives);
     } catch(e) {
       document.getElementById('loading').textContent = 'Failed to load. Please refresh. (' + e.message + ')';
     }
@@ -336,18 +346,16 @@
     return found;
   }
 
-  function render(campaigns, rejections, audiences, pipeData, formats, initiatives) {
+  function render(campaigns, rejections, audiences, formats, initiatives) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('count-pending').textContent     = campaigns.length || '0';
     document.getElementById('count-initiatives').textContent = initiatives.length || '0';
     document.getElementById('count-audiences').textContent   = audiences.length;
-    document.getElementById('count-pipeline').textContent    = (pipeData.pipeline || []).length || '0';
     document.getElementById('count-reports').textContent     = reportWeeks.length > 0 ? reportWeeks.length + ' wk' : '0';
     const now = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     document.getElementById('last-updated').textContent = 'keyona@rerev.io · ' + now;
     renderCampaignsTab(campaigns, rejections);
     renderInitiativesTab(initiatives, campaigns, formats);
-    renderPipelineTab(pipeData);
     renderReportsTab();
     renderAudiencesTab(audiences, campaigns);
     renderSysInfo(campaigns);
@@ -363,6 +371,7 @@
     el.classList.add('active');
   }
 
+  /* ---- CAMPAIGNS ---- */
   function renderCampaignsTab(campaigns, rejections) {
     const el = document.getElementById('campaigns');
     const rejMap = {};
@@ -385,6 +394,7 @@
         <div class="view-toggle">
           <button class="view-btn active" id="btn-cards" onclick="setCampView('cards')">&#9632; Cards</button>
           <button class="view-btn" id="btn-board" onclick="setCampView('board')">&#9638; Board</button>
+          <button class="view-btn" id="btn-list" onclick="setCampView('list')">&#9776; List</button>
         </div>
       </div>
       <div id="camp-view-area"></div>
@@ -397,6 +407,7 @@
     campView = v;
     document.getElementById('btn-cards').classList.toggle('active', v === 'cards');
     document.getElementById('btn-board').classList.toggle('active', v === 'board');
+    document.getElementById('btn-list').classList.toggle('active', v === 'list');
     renderCampView();
   }
 
@@ -406,9 +417,9 @@
     if (campFilter === 'pending')  return camps.filter(c => c.status === 'pending');
     if (campFilter === 'approved') return camps.filter(c => c.status === 'approved');
     if (campFilter === 'rejected') return camps.filter(c => c.status === 'rejected');
-    if (campFilter === 'waiting')  return camps.filter(c => c.outreachStatus === 'waiting');
-    if (campFilter === 'blocked')  return camps.filter(c => c.outreachStatus === 'blocked');
-    if (campFilter === 'move')     return camps.filter(c => c.outreachStatus === 'needs_send' || !c.outreachStatus);
+    if (campFilter === 'waiting')  return camps.filter(c => getEffectiveStatus(c) === 'waiting');
+    if (campFilter === 'blocked')  return camps.filter(c => getEffectiveStatus(c) === 'blocked');
+    if (campFilter === 'move')     return camps.filter(c => { const s = getEffectiveStatus(c); return s === 'needs_send' || !s; });
     return camps;
   }
 
@@ -422,22 +433,30 @@
       area.innerHTML = '<div class="empty-state"><strong>No campaigns yet.</strong><p style="margin-top:8px;font-size:13px;color:#5C4BE8;">Push your first campaign to get started.</p></div>';
       return;
     }
-    if (campView === 'board') {
-      const waiting = filtered.filter(c => c.outreachStatus === 'waiting');
-      const blocked = filtered.filter(c => c.outreachStatus === 'blocked');
-      const move    = filtered.filter(c => c.outreachStatus === 'needs_send' || !c.outreachStatus);
+    if (campView === 'list') {
+      renderCampListView(filtered, area);
+    } else if (campView === 'board') {
+      const waiting = filtered.filter(c => getEffectiveStatus(c) === 'waiting');
+      const blocked = filtered.filter(c => getEffectiveStatus(c) === 'blocked');
+      const move    = filtered.filter(c => { const s = getEffectiveStatus(c); return s === 'needs_send' || !s; });
       function boardCol(label, sub, cls, dotCls, items, detailKey, detailLabel) {
         const cards = items.length ? items.map(c => {
           const det = c[detailKey] ? '<div class="status-card-detail"><strong>' + detailLabel + '</strong>' + escHtml(c[detailKey]) + '</div>' : '';
-          return '<div class="status-card"><div class="status-card-title">' + escHtml(c.title) + '</div><div class="status-card-org">' + escHtml(c.contactOrg || c.targetAudience || '') + (c.from ? ' &middot; ' + escHtml(c.from) : '') + '</div>' + det + '</div>';
+          const mv = '<select class="move-select" style="margin-top:8px;" onchange="moveStatus(\'' + c.id + '\',this.value);this.blur()">'
+            + '<option value="">Move to...</option>'
+            + '<option value="waiting">Waiting on Them</option>'
+            + '<option value="blocked">Legitimate Blocker</option>'
+            + '<option value="needs_send">Time to Move</option>'
+            + '</select>';
+          return '<div class="status-card"><div class="status-card-title">' + escHtml(c.title) + '</div><div class="status-card-org">' + escHtml(c.contactOrg || c.targetAudience || '') + (c.from ? ' &middot; ' + escHtml(c.from) : '') + '</div>' + det + mv + '</div>';
         }).join('') : '<div class="status-empty">None right now.</div>';
         return '<div class="status-col ' + cls + '"><div class="status-col-header"><span class="status-dot ' + dotCls + '"></span>' + label + ' <span class="status-col-count">' + items.length + '</span></div><div class="status-col-sub">' + sub + '</div>' + cards + '</div>';
       }
-      area.innerHTML = '<div class="status-columns">' +
-        boardCol('Waiting on Them', 'You sent something. Ball is in their court.', 'status-col-waiting', 'dot-waiting', waiting, 'waitingOn', 'Waiting on') +
-        boardCol('Legitimate Blocker', 'Something real is in the way.', 'status-col-blocked', 'dot-blocked', blocked, 'blocker', 'Blocker') +
-        boardCol('Time to Move', 'Outreach not sent yet. Your attention goes here.', 'status-col-move', 'dot-move', move, 'angle', 'Angle') +
-        '</div>';
+      area.innerHTML = '<div class="status-columns">'
+        + boardCol('Waiting on Them', 'You sent something. Ball is in their court.', 'status-col-waiting', 'dot-waiting', waiting, 'waitingOn', 'Waiting on')
+        + boardCol('Legitimate Blocker', 'Something real is in the way.', 'status-col-blocked', 'dot-blocked', blocked, 'blocker', 'Blocker')
+        + boardCol('Time to Move', 'Outreach not sent yet. Your attention goes here.', 'status-col-move', 'dot-move', move, 'angle', 'Angle')
+        + '</div>';
     } else {
       const sorted = [
         ...filtered.filter(c => c.status === 'pending'),
@@ -448,15 +467,39 @@
     }
   }
 
+  function renderCampListView(filtered, area) {
+    const rows = filtered.map(c => {
+      const eff = getEffectiveStatus(c);
+      const emailRaw = c.contactEmail || '';
+      const emailCell = emailRaw ? '<span class="list-email">' + escHtml(emailRaw) + '</span>' : '<span style="font-size:11px;color:#ccc;">—</span>';
+      const sourceCell = c.sc_initiative_id ? '<span style="font-size:11px;color:#2D2A8C;">' + escHtml(c.sc_initiative_id) + '</span>' : '<span style="font-size:11px;color:#ccc;">—</span>';
+      const reviewPill = (c.status === 'approved') ? '<span class="status-pill-seq pill-approved">Approved</span>'
+        : (c.status === 'rejected') ? '<span class="status-pill-seq pill-rejected">Flagged</span>'
+        : '<span class="status-pill-seq pill-pending">Pending</span>';
+      const statusSelect = '<select class="list-status-select" onchange="moveStatus(\'' + c.id + '\',this.value)">'
+        + '<option value="waiting"' + (eff === 'waiting' ? ' selected' : '') + '>Waiting on Them</option>'
+        + '<option value="blocked"' + (eff === 'blocked' ? ' selected' : '') + '>Blocker</option>'
+        + '<option value="needs_send"' + ((eff === 'needs_send' || !eff) ? ' selected' : '') + '>Time to Move</option>'
+        + '</select>';
+      return '<tr>'
+        + '<td><div class="list-title-cell">' + escHtml(c.title) + '</div><div class="list-org">' + escHtml(c.contactOrg || '') + '</div><div class="list-person">' + escHtml(c.contactPerson || '') + '</div></td>'
+        + '<td>' + emailCell + '</td>'
+        + '<td>' + statusSelect + '</td>'
+        + '<td>' + reviewPill + '</td>'
+        + '<td>' + sourceCell + '</td>'
+        + '</tr>';
+    }).join('');
+    area.innerHTML = '<table class="list-table"><thead><tr><th>Campaign / Contact</th><th>Email</th><th>Outreach status</th><th>Review</th><th>Initiative</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
   const TYPE_BADGE_MAP = { email:'badge-email', linkedin:'badge-linkedin', content:'badge-content', event:'badge-event', pr:'badge-pr' };
   const TYPE_LABEL_MAP = { email:'Email', linkedin:'LinkedIn', content:'Content', event:'Event', pr:'PR / Press' };
 
-  function outreachPill(camp) {
-    const s = camp.outreachStatus;
-    if (s === 'waiting')    return '<span class="outreach-pill outreach-waiting">Waiting on Them</span>';
-    if (s === 'blocked')    return '<span class="outreach-pill outreach-blocked">Blocker</span>';
-    if (s === 'needs_send' || !s) return '<span class="outreach-pill outreach-move">Time to Move</span>';
-    return '';
+  function outreachPillHtml(camp) {
+    const s = getEffectiveStatus(camp);
+    if (s === 'waiting') return '<span class="outreach-pill outreach-waiting">Waiting on Them</span>';
+    if (s === 'blocked') return '<span class="outreach-pill outreach-blocked">Blocker</span>';
+    return '<span class="outreach-pill outreach-move">Time to Move</span>';
   }
 
   function renderCampCard(camp) {
@@ -472,14 +515,25 @@
     const cadence = camp.cadence ? ' &middot; ' + camp.cadence : '';
     const viewBtn = camp.campaignFile ? '<a class="btn btn-view" href="' + PAGES_BASE + '/' + camp.campaignFile + '" target="_blank">View campaign</a>' : '';
     const feedbackBtn = status === 'pending' ? '<a class="btn btn-feedback" href="https://github.com/keyona-rerev/rerev-comms-review/issues/new?title=Feedback%3A+' + encodeURIComponent(camp.title) + '&body=**Campaign+ID:**+' + camp.id + '%0A%0A**Feedback:**%0A" target="_blank">Leave feedback</a>' : '';
+    const moveSelectHtml = '<select class="move-select" onchange="moveStatus(\'' + camp.id + '\',this.value)">'
+      + '<option value="">Move status...</option>'
+      + '<option value="waiting">Waiting on Them</option>'
+      + '<option value="blocked">Legitimate Blocker</option>'
+      + '<option value="needs_send">Time to Move</option>'
+      + '</select>';
     const approvedNote = status === 'approved' && camp.approvalNote ? '<div class="approved-note"><strong>Why it worked</strong>' + escHtml(camp.approvalNote) + '</div>' : '';
     const rejectedNote = status === 'rejected' && (camp.rejectionReason || camp._rejectionReason) ? '<div class="rejection-note"><strong>Feedback</strong>' + escHtml(camp.rejectionReason || camp._rejectionReason) + '</div>' : '';
     const usageNote = camp.usageNote ? '<div class="usage-note">' + escHtml(camp.usageNote) + '</div>' : '';
     const angleNote = camp.angle ? '<div class="angle-note"><strong>Angle</strong>' + escHtml(camp.angle) + '</div>' : '';
-    const blockerNote = camp.outreachStatus === 'blocked' && camp.blocker ? '<div class="rejection-note"><strong>Blocker</strong>' + escHtml(camp.blocker) + '</div>' : '';
+    const blockerNote = getEffectiveStatus(camp) === 'blocked' && camp.blocker ? '<div class="rejection-note"><strong>Blocker</strong>' + escHtml(camp.blocker) + '</div>' : '';
     const draftId = 'draft-' + camp.id;
     const draftHtml = camp.emailDraft ? '<span class="draft-toggle" onclick="toggleDraft(\'' + draftId + '\', this)">&#9660; View email draft</span><div class="draft-block" id="' + draftId + '">' + escHtml(camp.emailDraft) + '</div>' : '';
-    return '<div class="card"><div class="card-top"><div><div class="card-title">' + escHtml(camp.title) + '</div>' + (camp.targetAudience ? '<div class="card-audience">' + escHtml(camp.targetAudience) + '</div>' : '') + '<div class="card-meta">' + escHtml(camp.pushedDate || '') + cadence + fromTag + ' ' + typeBadge + outreachPill(camp) + '</div></div><span class="status-pill-seq ' + pillClass + '">' + pillLabel + '</span></div>' + iniStrip + intelStrip + usageNote + angleNote + blockerNote + approvedNote + rejectedNote + draftHtml + '<div class="card-actions">' + viewBtn + feedbackBtn + '</div></div>';
+    return '<div class="card"><div class="card-top"><div><div class="card-title">' + escHtml(camp.title) + '</div>'
+      + (camp.targetAudience ? '<div class="card-audience">' + escHtml(camp.targetAudience) + '</div>' : '')
+      + '<div class="card-meta">' + escHtml(camp.pushedDate || '') + cadence + fromTag + ' ' + typeBadge + outreachPillHtml(camp) + '</div></div>'
+      + '<span class="status-pill-seq ' + pillClass + '">' + pillLabel + '</span></div>'
+      + iniStrip + intelStrip + usageNote + angleNote + blockerNote + approvedNote + rejectedNote + draftHtml
+      + '<div class="card-actions">' + viewBtn + feedbackBtn + moveSelectHtml + '</div></div>';
   }
 
   function toggleDraft(id, btn) {
@@ -490,43 +544,96 @@
     btn.textContent = open ? '\u25bc View email draft' : '\u25b2 Hide email draft';
   }
 
+  /* ---- INITIATIVES ---- */
+  function setIniView(v) {
+    iniView = v;
+    document.getElementById('ini-btn-cards').classList.toggle('active', v === 'cards');
+    document.getElementById('ini-btn-list').classList.toggle('active', v === 'list');
+    renderIniView();
+  }
+
   function renderInitiativesTab(initiatives, campaigns, formats) {
     const el = document.getElementById('initiatives');
     if (!initiatives.length) { el.innerHTML = '<div class="empty-state"><strong>No initiatives yet.</strong></div>'; return; }
-    const fmtMap = {};
-    formats.forEach(f => { fmtMap[f.id] = f; });
+    window._iniCampaigns = campaigns;
+    window._iniFmtMap = {};
+    formats.forEach(f => { window._iniFmtMap[f.id] = f; });
     const ORDER = { Critical: 0, High: 1, Medium: 2, Low: 3 };
-    const sorted = [...initiatives].sort((a, b) => (ORDER[a.priority] ?? 9) - (ORDER[b.priority] ?? 9));
-    el.innerHTML = '<div class="section-label">' + sorted.length + ' initiative' + (sorted.length !== 1 ? 's' : '') + '</div>' + sorted.map(ini => {
-      const statusKey = (ini.status || '').toLowerCase().replace(/\s/g, '');
-      const statusCls = statusKey === 'active' ? 'ini-status-active' : statusKey === 'planning' ? 'ini-status-planning' : 'ini-status-braindump';
-      const priCls = ini.priority === 'Critical' ? 'ini-priority-critical' : ini.priority === 'High' ? 'ini-priority-high' : 'ini-priority-medium';
-      const question = ini.core_question ? '<div class="ini-question"><strong>Core question</strong>' + escHtml(ini.core_question) + '</div>' : '';
-      const notes = ini.notes ? '<div class="ini-notes"><strong>Notes</strong>' + escHtml(ini.notes) + '</div>' : '';
-      const allLinked = campaigns.filter(c => c.sc_initiative_id === ini.id || (ini.linked_campaigns || []).includes(c.id));
-      const uniqueLinked = [...new Map(allLinked.map(c => [c.id, c])).values()];
-      const contactSection = uniqueLinked.length
-        ? '<hr class="ini-section-divider"><span class="ini-section-label">Campaigns &amp; Contacts (' + uniqueLinked.length + ')</span>' +
-          uniqueLinked.map(c => {
-            const personLine = c.contactPerson ? escHtml(c.contactPerson) + (c.contactTitle ? ', ' + escHtml(c.contactTitle) : '') : '';
-            const intel = c.contactIntel ? '<div class="ini-contact-intel">' + escHtml(c.contactIntel) + '</div>' : '';
-            const outreach = c.outreachStatus === 'waiting' ? '<span style="font-size:10px;color:#2D2A8C;font-weight:600;">Waiting on them</span>'
-              : c.outreachStatus === 'blocked' ? '<span style="font-size:10px;color:#8B3A1A;font-weight:600;">Blocker</span>'
-              : '<span style="font-size:10px;color:#7A5200;font-weight:600;">Time to move</span>';
-            return '<div class="ini-contact-card"><div class="ini-contact-name">' + escHtml(c.contactOrg || c.title) + ' ' + outreach + '</div>' + (personLine ? '<div class="ini-contact-title">' + personLine + '</div>' : '') + intel + '</div>';
-          }).join('')
-        : '';
-      const linkedFmts = (ini.contentFormats || []).map(fid => fmtMap[fid]).filter(Boolean);
-      const fmtSection = linkedFmts.length
-        ? '<hr class="ini-section-divider"><div class="fmt-toggle-bar" onclick="toggleFmt(\'' + ini.id + '\')"><span class="fmt-toggle-label">Content Formats (' + linkedFmts.length + ')</span><span class="fmt-toggle-icon" id="fmticon-' + ini.id + '">&#9660;</span></div><div class="fmt-panel" id="fmtpanel-' + ini.id + '">' +
-          linkedFmts.map(f => {
-            const sc = f.status === 'In Development' ? 'fmt-status-dev' : 'fmt-status-concept';
-            const ol = (f.contentOutline || []).map(i => '<li>' + escHtml(i) + '</li>').join('');
-            return '<div class="fmt-card"><div class="fmt-header"><div><div class="fmt-name">' + escHtml(f.name) + '</div><div class="fmt-meta">' + escHtml(f.duration || '') + '</div></div><span class="fmt-status ' + sc + '">' + escHtml(f.status) + '</span></div><div class="fmt-value-prop">' + escHtml(f.valueProp || '') + '</div><div class="fmt-section">Content outline</div><ul class="fmt-outline">' + ol + '</ul><div class="fmt-section">Co-host angle</div><div class="fmt-cohost">' + escHtml(f.coHostAngle || '') + '</div></div>';
-          }).join('') + '</div>'
-        : '';
-      return '<div class="ini-card"><div class="ini-card-top"><div><div class="ini-name">' + escHtml(ini.name) + '</div><div class="ini-timeline">' + escHtml(ini.timeline || '') + '</div></div><div class="ini-pills"><span class="ini-status-pill ' + statusCls + '">' + escHtml(ini.status) + '</span><span class="' + priCls + '">' + escHtml(ini.priority) + '</span></div></div><div class="ini-goal">' + escHtml(ini.goal) + '</div>' + question + notes + contactSection + fmtSection + '<div class="ini-id">' + escHtml(ini.id) + '</div></div>';
-    }).join('');
+    window._iniSorted = [...initiatives].sort((a, b) => (ORDER[a.priority] ?? 9) - (ORDER[b.priority] ?? 9));
+    el.innerHTML = `
+      <div class="camp-toolbar">
+        <div class="camp-toolbar-left">
+          <div class="section-label" style="margin:0;">${initiatives.length} initiative${initiatives.length !== 1 ? 's' : ''}</div>
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" id="ini-btn-cards" onclick="setIniView('cards')">&#9632; Cards</button>
+          <button class="view-btn" id="ini-btn-list" onclick="setIniView('list')">&#9776; List</button>
+        </div>
+      </div>
+      <div id="ini-view-area"></div>
+    `;
+    renderIniView();
+  }
+
+  function renderIniView() {
+    const area = document.getElementById('ini-view-area');
+    if (!area) return;
+    const sorted = window._iniSorted || [];
+    const campaigns = window._iniCampaigns || [];
+    const fmtMap = window._iniFmtMap || {};
+    if (iniView === 'list') {
+      const rows = sorted.map(ini => {
+        const statusKey = (ini.status || '').toLowerCase().replace(/\s/g, '');
+        const statusCls = statusKey === 'active' ? 'ini-status-active' : statusKey === 'planning' ? 'ini-status-planning' : 'ini-status-braindump';
+        const priCls = ini.priority === 'Critical' ? 'ini-priority-critical' : ini.priority === 'High' ? 'ini-priority-high' : 'ini-priority-medium';
+        const linked = campaigns.filter(c => c.sc_initiative_id === ini.id || (ini.linked_campaigns || []).includes(c.id));
+        const campCount = linked.length ? '<span style="font-size:11px;color:#4A4A8C;">' + linked.length + ' campaign' + (linked.length !== 1 ? 's' : '') + '</span>' : '<span style="font-size:11px;color:#ccc;">—</span>';
+        const question = ini.core_question ? '<div class="ini-list-question">' + escHtml(ini.core_question) + '</div>' : '';
+        return '<tr>'
+          + '<td><div class="ini-list-name">' + escHtml(ini.name) + '</div><div class="ini-list-venture">' + escHtml(ini.venture || '') + '</div>' + question + '</td>'
+          + '<td><span class="ini-status-pill ' + statusCls + '">' + escHtml(ini.status) + '</span></td>'
+          + '<td><span class="' + priCls + '">' + escHtml(ini.priority) + '</span></td>'
+          + '<td style="font-size:12px;color:#555;">' + escHtml(ini.timeline || '—') + '</td>'
+          + '<td>' + campCount + '</td>'
+          + '<td style="font-size:11px;color:#8B84D8;font-family:monospace;">' + escHtml(ini.id) + '</td>'
+          + '</tr>';
+      }).join('');
+      area.innerHTML = '<table class="ini-list-table"><thead><tr><th>Initiative</th><th>Status</th><th>Priority</th><th>Timeline</th><th>Campaigns</th><th>ID</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    } else {
+      area.innerHTML = sorted.map(ini => renderIniCard(ini, campaigns, fmtMap)).join('');
+    }
+  }
+
+  function renderIniCard(ini, campaigns, fmtMap) {
+    const statusKey = (ini.status || '').toLowerCase().replace(/\s/g, '');
+    const statusCls = statusKey === 'active' ? 'ini-status-active' : statusKey === 'planning' ? 'ini-status-planning' : 'ini-status-braindump';
+    const priCls = ini.priority === 'Critical' ? 'ini-priority-critical' : ini.priority === 'High' ? 'ini-priority-high' : 'ini-priority-medium';
+    const question = ini.core_question ? '<div class="ini-question"><strong>Core question</strong>' + escHtml(ini.core_question) + '</div>' : '';
+    const notes = ini.notes ? '<div class="ini-notes"><strong>Notes</strong>' + escHtml(ini.notes) + '</div>' : '';
+    const allLinked = campaigns.filter(c => c.sc_initiative_id === ini.id || (ini.linked_campaigns || []).includes(c.id));
+    const uniqueLinked = [...new Map(allLinked.map(c => [c.id, c])).values()];
+    const contactSection = uniqueLinked.length
+      ? '<hr class="ini-section-divider"><span class="ini-section-label">Campaigns &amp; Contacts (' + uniqueLinked.length + ')</span>'
+        + uniqueLinked.map(c => {
+          const personLine = c.contactPerson ? escHtml(c.contactPerson) + (c.contactTitle ? ', ' + escHtml(c.contactTitle) : '') : '';
+          const intel = c.contactIntel ? '<div class="ini-contact-intel">' + escHtml(c.contactIntel) + '</div>' : '';
+          const eff = getEffectiveStatus(c);
+          const outreach = eff === 'waiting' ? '<span style="font-size:10px;color:#2D2A8C;font-weight:600;">Waiting on them</span>'
+            : eff === 'blocked' ? '<span style="font-size:10px;color:#8B3A1A;font-weight:600;">Blocker</span>'
+            : '<span style="font-size:10px;color:#7A5200;font-weight:600;">Time to move</span>';
+          return '<div class="ini-contact-card"><div class="ini-contact-name">' + escHtml(c.contactOrg || c.title) + ' ' + outreach + '</div>' + (personLine ? '<div class="ini-contact-title">' + personLine + '</div>' : '') + intel + '</div>';
+        }).join('')
+      : '';
+    const linkedFmts = (ini.contentFormats || []).map(fid => fmtMap[fid]).filter(Boolean);
+    const fmtSection = linkedFmts.length
+      ? '<hr class="ini-section-divider"><div class="fmt-toggle-bar" onclick="toggleFmt(\'' + ini.id + '\')"><span class="fmt-toggle-label">Content Formats (' + linkedFmts.length + ')</span><span class="fmt-toggle-icon" id="fmticon-' + ini.id + '">&#9660;</span></div><div class="fmt-panel" id="fmtpanel-' + ini.id + '">'
+        + linkedFmts.map(f => {
+          const sc = f.status === 'In Development' ? 'fmt-status-dev' : 'fmt-status-concept';
+          const ol = (f.contentOutline || []).map(i => '<li>' + escHtml(i) + '</li>').join('');
+          return '<div class="fmt-card"><div class="fmt-header"><div><div class="fmt-name">' + escHtml(f.name) + '</div><div class="fmt-meta">' + escHtml(f.duration || '') + '</div></div><span class="fmt-status ' + sc + '">' + escHtml(f.status) + '</span></div><div class="fmt-value-prop">' + escHtml(f.valueProp || '') + '</div><div class="fmt-section">Content outline</div><ul class="fmt-outline">' + ol + '</ul><div class="fmt-section">Co-host angle</div><div class="fmt-cohost">' + escHtml(f.coHostAngle || '') + '</div></div>';
+        }).join('') + '</div>'
+      : '';
+    return '<div class="ini-card"><div class="ini-card-top"><div><div class="ini-name">' + escHtml(ini.name) + '</div><div class="ini-timeline">' + escHtml(ini.timeline || '') + '</div></div><div class="ini-pills"><span class="ini-status-pill ' + statusCls + '">' + escHtml(ini.status) + '</span><span class="' + priCls + '">' + escHtml(ini.priority) + '</span></div></div><div class="ini-goal">' + escHtml(ini.goal) + '</div>' + question + notes + contactSection + fmtSection + '<div class="ini-id">' + escHtml(ini.id) + '</div></div>';
   }
 
   function toggleFmt(iniId) {
@@ -538,24 +645,7 @@
     if (icon) icon.classList.toggle('open', !open);
   }
 
-  function renderPipelineTab(pipeData) {
-    const el = document.getElementById('pipeline');
-    const meta = pipeData.meta || {};
-    const pipeline = pipeData.pipeline || [];
-    const sourcing = pipeline.filter(p => p.bucket === 'sourcing');
-    const active   = pipeline.filter(p => p.bucket === 'active');
-    const nurture  = pipeline.filter(p => p.bucket === 'nurture');
-    const hdr = '<div class="pipeline-header"><div><div class="pipeline-batch-name">' + escHtml(meta.current_batch || '') + '</div><div class="pipeline-statement">' + escHtml(meta.focus || '') + '</div></div><div class="pipeline-meta">' + (meta.last_updated ? 'Last updated: <strong>' + escHtml(meta.last_updated) + '</strong>' : '') + '</div></div>';
-    const cols = [{ label: 'Sourcing', cls: 'col-sourcing', items: sourcing }, { label: 'Active Comms', cls: 'col-active', items: active }, { label: 'Nurture / Watch', cls: 'col-nurture', items: nurture }];
-    el.innerHTML = hdr + '<div class="pipeline-board">' + cols.map(col => '<div class="pipeline-col ' + col.cls + '"><div class="pipeline-col-header">' + col.label + ' <span class="col-count">' + col.items.length + '</span></div>' + (col.items.length ? col.items.map(p => {
-      const typeTag = p.type ? '<span class="pcard-tag pcard-tag-type">' + escHtml(p.type) + '</span>' : '';
-      const sectorTag = p.sector ? '<span class="pcard-tag pcard-tag-sector">' + escHtml(p.sector) + '</span>' : '';
-      const connTag = p.connection ? '<span class="pcard-tag pcard-tag-conn">&#10003; ' + escHtml(p.connection) + '</span>' : '';
-      const sig = p.signals && p.signals.length ? '<div class="pcard-signals"><strong>Context</strong>' + p.signals.map(s => escHtml(s)).join(' &middot; ') + '</div>' : '';
-      return '<div class="pcard"><div class="pcard-name">' + escHtml(p.name || '') + '</div><div class="pcard-loc">' + escHtml(p.location || '') + '</div><div class="pcard-tags">' + typeTag + sectorTag + connTag + '</div>' + sig + '</div>';
-    }).join('') : '<div class="pcard-empty">No entries yet</div>') + '</div>').join('') + '</div>';
-  }
-
+  /* ---- REPORTS ---- */
   function renderReportsTab() {
     const el = document.getElementById('reports');
     if (!reportWeeks.length) { el.innerHTML = '<div class="reports-no-data"><strong>No reports yet.</strong><p>Add reports/week-1.json to populate.</p></div>'; return; }
@@ -579,6 +669,7 @@
     body.innerHTML = html;
   }
 
+  /* ---- AUDIENCES ---- */
   function renderAudiencesTab(audiences, campaigns) {
     const el = document.getElementById('audiences');
     el.innerHTML = '<div class="aud-toolbar"><div class="section-label" style="margin:0;">' + audiences.length + ' audience profile(s)</div><div class="view-toggle"><button class="view-btn active" id="aud-card-btn" onclick="setAudView(\'card\')">Cards</button><button class="view-btn" id="aud-list-btn" onclick="setAudView(\'list\')">List</button></div></div><div id="aud-card-view" class="aud-grid">' + audiences.map(a => renderAudCard(a, campaigns)).join('') + '</div><div id="aud-list-view" style="display:none;">' + renderAudList(audiences, campaigns) + '</div>';
@@ -603,12 +694,13 @@
     return '<table class="aud-list-table"><thead><tr><th>Audience</th><th>Titles</th><th>Sector / Geo</th></tr></thead><tbody>' + audiences.map(a => '<tr><td><div class="aud-list-name">' + escHtml(a.name) + '</div><div class="aud-list-titles">' + escHtml(a.segment || '') + '</div></td><td>' + escHtml((a.targetTitles || []).join(', ')) + '</td><td>' + escHtml(a.sector || '') + (a.geo ? ' / ' + escHtml(a.geo) : '') + '</td></tr>').join('') + '</tbody></table>';
   }
 
+  /* ---- SYS INFO ---- */
   function renderSysInfo(campaigns) {
     const el = document.getElementById('sysinfo');
     const pending  = campaigns.filter(c => c.status === 'pending').length;
     const approved = campaigns.filter(c => c.status === 'approved').length;
     const rejected = campaigns.filter(c => c.status === 'rejected').length;
-    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns folder</span><span class="info-value">campaigns/</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>Audience profiles</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>pipeline.json</td><td>Outreach pipeline board</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
+    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns folder</span><span class="info-value">campaigns/</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>Audience profiles</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
   }
 
   function escHtml(str) {
