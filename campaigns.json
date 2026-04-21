@@ -14,7 +14,7 @@
       "send_from": "keyona@rerev.io",
       "volume_target": 50,
       "sent_count": 4,
-      "notes": "v1 drafts (Lydia, Andy, Greg, Lee) sent 2026-04-21 — wordy commend paragraphs. v3 drafts created for remaining 10 with tightened copy. Label must be applied manually in Gmail.",
+      "notes": "v1 drafts (Lydia, Andy, Greg, Lee) sent 2026-04-21. v3 drafts created for remaining 10 with tightened copy. Undeliverable: David Ebner (david@contentworkshop.com), Lyn Wineman (lyn@kidglov.com), Anne Zizzo (anne@zizzogroup.com). Label must be applied manually in Gmail.",
       "contacts": [
         {
           "name": "Megan Shroy",
@@ -29,7 +29,8 @@
           "org": "Content Workshop",
           "email": "david@contentworkshop.com",
           "subject": "Your episode on authenticity as the agency edge",
-          "status": "drafted",
+          "status": "undeliverable",
+          "notes": "Email bounced / did not deliver 2026-04-21.",
           "body": "Hi David,\n\nYour episode 335 on The Innovative Agency on authenticity being the agency edge landed for me, especially the idea that storytelling decides whether the AI output is worth publishing at all. That order of operations, craft first and automation in service of it, is how I build.\n\nI am Keyona, the founder of ReRev Labs. ReRev Labs specializes in using AI-powered automation to give founders their time back without sacrificing the integrity of their voice or their work. In the past that has looked like:\n\n* 5-minute automated follow-up (transcript to Claude drafts with scope log to your Gmail drafts)\n* Claude-native second brain that diminishes the pain of context switching between clients\n* Client reporting plus scope tracking (client data plus SOW plus week's activity to Claude synthesizes to client-ready report plus internal scope-delta view)\n\nAmong other builds. I work with marketing agency owners who want that kind of leverage inside their own operations without risking what makes their client work strong.\n\nOne of the builds I listed, the 5-minute follow-up automation, is something I set up for clients directly. If any of this resonates, I would love to get on a brief call and walk you through what that setup looks like for an agency your size. If it is a fit, I can have it running for you the same week.\n\nWarmly, Keyona"
         },
         {
@@ -77,7 +78,8 @@
           "org": "KidGlov",
           "email": "lyn@kidglov.com",
           "subject": "Your 200-plus episodes of Agency for Change",
-          "status": "drafted",
+          "status": "undeliverable",
+          "notes": "Email bounced / did not deliver 2026-04-21.",
           "body": "Hi Lyn,\n\nHosting 200-plus episodes of Agency for Change at KidGlov reads like a working thesis for the agency, where amplifying changemakers is both the product and the marketing. That alignment, where how the agency runs and who it serves are the same answer, is close to how I think about my work.\n\nI am Keyona, the founder of ReRev Labs. ReRev Labs specializes in using AI-powered automation to give founders their time back without sacrificing the integrity of their voice or their work. In the past that has looked like:\n\n* 5-minute automated follow-up (transcript to Claude drafts with scope log to your Gmail drafts)\n* Claude-native second brain that diminishes the pain of context switching between clients\n* Client reporting plus scope tracking (client data plus SOW plus week's activity to Claude synthesizes to client-ready report plus internal scope-delta view)\n\nAmong other builds. I work with marketing agency owners who want that kind of leverage inside their own operations without risking what makes their client work strong.\n\nOne of the builds I listed, the 5-minute follow-up automation, is something I set up for clients directly. If any of this resonates, I would love to get on a brief call and walk you through what that setup looks like for an agency your size. If it is a fit, I can have it running for you the same week.\n\nWarmly, Keyona"
         },
         {
@@ -85,7 +87,8 @@
           "org": "Zizzo Group",
           "email": "anne@zizzogroup.com",
           "subject": "Your ZG Content Factory launch",
-          "status": "drafted",
+          "status": "undeliverable",
+          "notes": "Email bounced / did not deliver 2026-04-21.",
           "body": "Hi Anne,\n\nThe ZG Content Factory launch reads like you are betting the next decade on operational leverage rather than headcount. That move, building the tooling before the volume demands it, is close to how I think about my work.\n\nI am Keyona, the founder of ReRev Labs. ReRev Labs specializes in using AI-powered automation to give founders their time back without sacrificing the integrity of their voice or their work. In the past that has looked like:\n\n* 5-minute automated follow-up (transcript to Claude drafts with scope log to your Gmail drafts)\n* Claude-native second brain that diminishes the pain of context switching between clients\n* Client reporting plus scope tracking (client data plus SOW plus week's activity to Claude synthesizes to client-ready report plus internal scope-delta view)\n\nAmong other builds. I work with marketing agency owners who want that kind of leverage inside their own operations without risking what makes their client work strong.\n\nOne of the builds I listed, the 5-minute follow-up automation, is something I set up for clients directly. If any of this resonates, I would love to get on a brief call and walk you through what that setup looks like for an agency your size. If it is a fit, I can have it running for you the same week.\n\nWarmly, Keyona"
         },
         {
