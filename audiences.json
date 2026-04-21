@@ -1,6 +1,7 @@
 {
   "audiences": [
     {
+      "aud_id": "AUD-001",
       "id": "marketing-agency-owners",
       "name": "Marketing agency owners",
       "segment": "Buyer",
@@ -12,10 +13,11 @@
       "angle": "Lead with ops leverage, not AI hype. The frame is: what makes your client work worth buying should not be the thing you sacrifice to scale. Automation protects the craft, it doesn't replace it.",
       "automationHook": "5-minute follow-up automation: meeting transcript goes to Claude, gets processed, lands as a draft in their Gmail. Low lift to set up, immediately visible value. Offered as the consult hook.",
       "ctaModel": "Offer to set them up with the follow-up automation on a brief call. The call is the filter, not the pitch.",
-      "campaigns": [],
+      "campaigns": ["CMP-001"],
       "sc_contact_ids": []
     },
     {
+      "aud_id": "AUD-002",
       "id": "fractional-executives",
       "name": "Fractional executives",
       "segment": "Buyer",
@@ -31,6 +33,7 @@
       "sc_contact_ids": []
     },
     {
+      "aud_id": "AUD-003",
       "id": "boutique-advisors",
       "name": "Boutique advisors",
       "segment": "Buyer",
@@ -46,6 +49,7 @@
       "sc_contact_ids": []
     },
     {
+      "aud_id": "AUD-004",
       "id": "interim-leaders",
       "name": "Interim leaders and nonprofit executives",
       "segment": "Buyer",
