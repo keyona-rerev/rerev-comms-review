@@ -1,1 +1,20 @@
-{ "campaigns": [] }
+{
+  "campaigns": [
+    {
+      "id": "agency-batch-1",
+      "name": "Marketing Agency Owners — Batch 1",
+      "audience_id": "marketing-agency-owners",
+      "status": "drafting",
+      "created": "2026-04-21",
+      "label": "ReRev Outreach / Agency Batch 1",
+      "cta_model": "Offer to set up the 5-minute follow-up automation on a brief call. Call is the filter.",
+      "landing_page": "https://rerev.io/agencies",
+      "email_template_version": "v2 — automation offer CTA (updated from v1 consult CTA)",
+      "send_from": "keyona@rerev.io",
+      "volume_target": 50,
+      "sent_count": 0,
+      "notes": "Cowork session responsible for personalizing and creating Gmail drafts with label applied. Do not send from main account until label system is confirmed working.",
+      "contacts": []
+    }
+  ]
+}
