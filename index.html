@@ -448,7 +448,7 @@
             + '<option value="blocked">Legitimate Blocker</option>'
             + '<option value="needs_send">Time to Move</option>'
             + '</select>';
-          return '<div class="status-card"><div class="status-card-title">' + escHtml(c.title) + '</div><div class="status-card-org">' + escHtml(c.contactOrg || c.targetAudience || '') + (c.from ? ' &middot; ' + escHtml(c.from) : '') + '</div>' + det + mv + '</div>';
+          return '<div class="status-card"><div class="status-card-title">' + escHtml(c.name || c.title || c.id) + '</div><div class="status-card-org">' + escHtml(c.contactOrg || c.targetAudience || '') + (c.from ? ' &middot; ' + escHtml(c.from) : '') + '</div>' + det + mv + '</div>';
         }).join('') : '<div class="status-empty">None right now.</div>';
         return '<div class="status-col ' + cls + '"><div class="status-col-header"><span class="status-dot ' + dotCls + '"></span>' + label + ' <span class="status-col-count">' + items.length + '</span></div><div class="status-col-sub">' + sub + '</div>' + cards + '</div>';
       }
@@ -461,7 +461,8 @@
       const sorted = [
         ...filtered.filter(c => c.status === 'pending'),
         ...filtered.filter(c => c.status === 'approved'),
-        ...filtered.filter(c => c.status === 'rejected')
+        ...filtered.filter(c => c.status === 'rejected'),
+        ...filtered.filter(c => c.status === 'drafting')
       ];
       area.innerHTML = sorted.map(c => renderCampCard(c)).join('');
     }
@@ -475,14 +476,16 @@
       const sourceCell = c.sc_initiative_id ? '<span style="font-size:11px;color:#2D2A8C;">' + escHtml(c.sc_initiative_id) + '</span>' : '<span style="font-size:11px;color:#ccc;">—</span>';
       const reviewPill = (c.status === 'approved') ? '<span class="status-pill-seq pill-approved">Approved</span>'
         : (c.status === 'rejected') ? '<span class="status-pill-seq pill-rejected">Flagged</span>'
+        : (c.status === 'drafting') ? '<span class="status-pill-seq" style="background:#E8EAF6;color:#4A4A8C;">In Progress</span>'
         : '<span class="status-pill-seq pill-pending">Pending</span>';
       const statusSelect = '<select class="list-status-select" onchange="moveStatus(\'' + c.id + '\',this.value)">'
         + '<option value="waiting"' + (eff === 'waiting' ? ' selected' : '') + '>Waiting on Them</option>'
         + '<option value="blocked"' + (eff === 'blocked' ? ' selected' : '') + '>Blocker</option>'
         + '<option value="needs_send"' + ((eff === 'needs_send' || !eff) ? ' selected' : '') + '>Time to Move</option>'
         + '</select>';
+      const contactCount = (c.contacts && c.contacts.length) ? '<div style="font-size:11px;color:#5C4BE8;margin-top:2px;">' + c.contacts.length + ' contacts</div>' : '';
       return '<tr>'
-        + '<td><div class="list-title-cell">' + escHtml(c.title) + '</div><div class="list-org">' + escHtml(c.contactOrg || '') + '</div><div class="list-person">' + escHtml(c.contactPerson || '') + '</div></td>'
+        + '<td><div class="list-title-cell">' + escHtml(c.name || c.title || c.id) + '</div><div class="list-org">' + escHtml(c.contactOrg || (c.audience_id ? c.audience_id.replace(/-/g,' ') : '') || '') + '</div><div class="list-person">' + escHtml(c.send_from || c.contactPerson || '') + '</div>' + contactCount + '</td>'
         + '<td>' + emailCell + '</td>'
         + '<td>' + statusSelect + '</td>'
         + '<td>' + reviewPill + '</td>'
@@ -508,7 +511,7 @@
     const intelStrip = camp.contactIntel ? '<div class="contact-intel-strip"><strong>Contact Intel</strong>' + escHtml(camp.contactIntel) + '</div>' : '';
     const status = camp.status || 'pending';
     const pillClass = status === 'approved' ? 'pill-approved' : status === 'rejected' ? 'pill-rejected' : 'pill-pending';
-    const pillLabel = status === 'approved' ? 'Approved' : status === 'rejected' ? 'Flagged' : 'Awaiting Review';
+    const pillLabel = status === 'approved' ? 'Approved' : status === 'rejected' ? 'Flagged' : status === 'drafting' ? 'In Progress' : 'Awaiting Review';
     const typeKey = (camp.type || 'email').toLowerCase();
     const typeBadge = '<span class="type-badge ' + (TYPE_BADGE_MAP[typeKey] || 'badge-email') + '">' + (TYPE_LABEL_MAP[typeKey] || camp.type || 'Email') + '</span>';
     const fromTag = camp.send_from ? ' &middot; From: ' + escHtml(camp.send_from) : (camp.from ? ' &middot; From: ' + escHtml(camp.from) : '');
@@ -665,7 +668,7 @@
           const outreach = eff === 'waiting' ? '<span style="font-size:10px;color:#2D2A8C;font-weight:600;">Waiting on them</span>'
             : eff === 'blocked' ? '<span style="font-size:10px;color:#8B3A1A;font-weight:600;">Blocker</span>'
             : '<span style="font-size:10px;color:#7A5200;font-weight:600;">Time to move</span>';
-          return '<div class="ini-contact-card"><div class="ini-contact-name">' + escHtml(c.contactOrg || c.title) + ' ' + outreach + '</div>' + (personLine ? '<div class="ini-contact-title">' + personLine + '</div>' : '') + intel + '</div>';
+          return '<div class="ini-contact-card"><div class="ini-contact-name">' + escHtml(c.contactOrg || c.name || c.title) + ' ' + outreach + '</div>' + (personLine ? '<div class="ini-contact-title">' + personLine + '</div>' : '') + intel + '</div>';
         }).join('')
       : '';
     const linkedFmts = (ini.contentFormats || []).map(fid => fmtMap[fid]).filter(Boolean);
@@ -746,7 +749,7 @@
     const approved = campaigns.filter(c => c.status === 'approved').length;
     const rejected = campaigns.filter(c => c.status === 'rejected').length;
     const drafting = campaigns.filter(c => c.status === 'drafting').length;
-    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">In progress</span><span class="info-value">' + drafting + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns folder</span><span class="info-value">campaigns.json</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records with contacts and email bodies</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>ICP audience profiles with landing pages</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
+    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">In progress</span><span class="info-value">' + drafting + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns file</span><span class="info-value">campaigns.json</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records with contacts and email bodies</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>ICP audience profiles with landing pages</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
   }
 
   function escHtml(str) {
