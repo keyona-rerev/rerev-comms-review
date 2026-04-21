@@ -509,12 +509,13 @@
     const status = camp.status || 'pending';
     const pillClass = status === 'approved' ? 'pill-approved' : status === 'rejected' ? 'pill-rejected' : 'pill-pending';
     const pillLabel = status === 'approved' ? 'Approved' : status === 'rejected' ? 'Flagged' : 'Awaiting Review';
-    const typeKey = (camp.type || 'content').toLowerCase();
-    const typeBadge = '<span class="type-badge ' + (TYPE_BADGE_MAP[typeKey] || 'badge-content') + '">' + (TYPE_LABEL_MAP[typeKey] || camp.type) + '</span>';
-    const fromTag = camp.from ? ' &middot; From: ' + escHtml(camp.from) : '';
+    const typeKey = (camp.type || 'email').toLowerCase();
+    const typeBadge = '<span class="type-badge ' + (TYPE_BADGE_MAP[typeKey] || 'badge-email') + '">' + (TYPE_LABEL_MAP[typeKey] || camp.type || 'Email') + '</span>';
+    const fromTag = camp.send_from ? ' &middot; From: ' + escHtml(camp.send_from) : (camp.from ? ' &middot; From: ' + escHtml(camp.from) : '');
     const cadence = camp.cadence ? ' &middot; ' + camp.cadence : '';
+    const dateTag = camp.created ? escHtml(camp.created) : escHtml(camp.pushedDate || '');
     const viewBtn = camp.campaignFile ? '<a class="btn btn-view" href="' + PAGES_BASE + '/' + camp.campaignFile + '" target="_blank">View campaign</a>' : '';
-    const feedbackBtn = status === 'pending' ? '<a class="btn btn-feedback" href="https://github.com/keyona-rerev/rerev-comms-review/issues/new?title=Feedback%3A+' + encodeURIComponent(camp.title) + '&body=**Campaign+ID:**+' + camp.id + '%0A%0A**Feedback:**%0A" target="_blank">Leave feedback</a>' : '';
+    const feedbackBtn = status === 'pending' ? '<a class="btn btn-feedback" href="https://github.com/keyona-rerev/rerev-comms-review/issues/new?title=Feedback%3A+' + encodeURIComponent(camp.name || camp.title || camp.id) + '&body=**Campaign+ID:**+' + camp.id + '%0A%0A**Feedback:**%0A" target="_blank">Leave feedback</a>' : '';
     const moveSelectHtml = '<select class="move-select" onchange="moveStatus(\'' + camp.id + '\',this.value)">'
       + '<option value="">Move status...</option>'
       + '<option value="waiting">Waiting on Them</option>'
@@ -524,16 +525,59 @@
     const approvedNote = status === 'approved' && camp.approvalNote ? '<div class="approved-note"><strong>Why it worked</strong>' + escHtml(camp.approvalNote) + '</div>' : '';
     const rejectedNote = status === 'rejected' && (camp.rejectionReason || camp._rejectionReason) ? '<div class="rejection-note"><strong>Feedback</strong>' + escHtml(camp.rejectionReason || camp._rejectionReason) + '</div>' : '';
     const usageNote = camp.usageNote ? '<div class="usage-note">' + escHtml(camp.usageNote) + '</div>' : '';
-    const angleNote = camp.angle ? '<div class="angle-note"><strong>Angle</strong>' + escHtml(camp.angle) + '</div>' : '';
+    const ctaNote = camp.cta_model ? '<div class="angle-note"><strong>CTA Model</strong>' + escHtml(camp.cta_model) + '</div>' : (camp.angle ? '<div class="angle-note"><strong>Angle</strong>' + escHtml(camp.angle) + '</div>' : '');
     const blockerNote = getEffectiveStatus(camp) === 'blocked' && camp.blocker ? '<div class="rejection-note"><strong>Blocker</strong>' + escHtml(camp.blocker) + '</div>' : '';
     const draftId = 'draft-' + camp.id;
     const draftHtml = camp.emailDraft ? '<span class="draft-toggle" onclick="toggleDraft(\'' + draftId + '\', this)">&#9660; View email draft</span><div class="draft-block" id="' + draftId + '">' + escHtml(camp.emailDraft) + '</div>' : '';
-    return '<div class="card"><div class="card-top"><div><div class="card-title">' + escHtml(camp.title) + '</div>'
-      + (camp.targetAudience ? '<div class="card-audience">' + escHtml(camp.targetAudience) + '</div>' : '')
-      + '<div class="card-meta">' + escHtml(camp.pushedDate || '') + cadence + fromTag + ' ' + typeBadge + outreachPillHtml(camp) + '</div></div>'
+    const contactsHtml = (camp.contacts && camp.contacts.length) ? renderCampContacts(camp) : '';
+    const displayTitle = camp.name || camp.title || camp.id;
+    const displayAudience = camp.audience_id ? camp.audience_id.replace(/-/g,' ') : (camp.targetAudience || '');
+    return '<div class="card"><div class="card-top"><div><div class="card-title">' + escHtml(displayTitle) + '</div>'
+      + (displayAudience ? '<div class="card-audience">' + escHtml(displayAudience) + '</div>' : '')
+      + '<div class="card-meta">' + dateTag + cadence + fromTag + ' ' + typeBadge + outreachPillHtml(camp) + '</div></div>'
       + '<span class="status-pill-seq ' + pillClass + '">' + pillLabel + '</span></div>'
-      + iniStrip + intelStrip + usageNote + angleNote + blockerNote + approvedNote + rejectedNote + draftHtml
+      + iniStrip + intelStrip + usageNote + ctaNote + blockerNote + approvedNote + rejectedNote + draftHtml + contactsHtml
       + '<div class="card-actions">' + viewBtn + feedbackBtn + moveSelectHtml + '</div></div>';
+  }
+
+  function renderCampContacts(camp) {
+    const count = camp.contacts.length;
+    const panelId = 'contacts-panel-' + camp.id;
+    const iconId  = 'contacts-icon-' + camp.id;
+    const rows = camp.contacts.map((ct, i) => {
+      const rowId = 'email-' + camp.id + '-' + i;
+      const statusPill = ct.status === 'sent'
+        ? '<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#EAE8F5;color:#2D2A8C;">Sent</span>'
+        : ct.status === 'replied'
+        ? '<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FDF3DC;color:#7A5200;">Replied</span>'
+        : '<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#F0EEE8;color:#5A5850;">Drafted</span>';
+      const emailBody = ct.body ? '<div class="draft-block" id="' + rowId + '" style="display:none;margin-top:8px;">' + escHtml(ct.body) + '</div>' : '';
+      const toggleBtn = ct.body ? '<span class="draft-toggle" style="margin-top:6px;display:inline-block;" onclick="toggleDraft(\'' + rowId + '\',this)">&#9660; View email</span>' : '';
+      return '<div style="background:#F7F8FC;border:1px solid #C8CDE8;border-radius:8px;padding:10px 14px;margin-bottom:8px;">'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">'
+        + '<div><div style="font-size:13px;font-weight:600;color:#1A1A3E;">' + escHtml(ct.name) + '</div>'
+        + '<div style="font-size:11px;color:#4A4A8C;">' + escHtml(ct.org || '') + (ct.email ? ' &middot; ' + escHtml(ct.email) : '') + '</div>'
+        + (ct.subject ? '<div style="font-size:11px;color:#555;margin-top:2px;font-style:italic;">' + escHtml(ct.subject) + '</div>' : '')
+        + '</div>' + statusPill + '</div>'
+        + toggleBtn + emailBody
+        + '</div>';
+    }).join('');
+    return '<div style="margin-bottom:12px;">'
+      + '<div class="fmt-toggle-bar" onclick="toggleContactsPanel(\'' + panelId + '\',\'' + iconId + '\')">'
+      + '<span class="fmt-toggle-label">&#9993; Contacts &amp; Emails (' + count + ')</span>'
+      + '<span class="fmt-toggle-icon" id="' + iconId + '">&#9660;</span>'
+      + '</div>'
+      + '<div id="' + panelId + '" style="display:none;margin-top:10px;">' + rows + '</div>'
+      + '</div>';
+  }
+
+  function toggleContactsPanel(panelId, iconId) {
+    const panel = document.getElementById(panelId);
+    const icon  = document.getElementById(iconId);
+    if (!panel) return;
+    const open = panel.style.display === 'block';
+    panel.style.display = open ? 'none' : 'block';
+    if (icon) icon.classList.toggle('open', !open);
   }
 
   function toggleDraft(id, btn) {
@@ -541,7 +585,7 @@
     if (!el) return;
     const open = el.style.display === 'block';
     el.style.display = open ? 'none' : 'block';
-    btn.textContent = open ? '\u25bc View email draft' : '\u25b2 Hide email draft';
+    btn.textContent = open ? '\u25bc View email' : '\u25b2 Hide email';
   }
 
   /* ---- INITIATIVES ---- */
@@ -684,9 +728,10 @@
   }
 
   function renderAudCard(a, campaigns) {
-    const linked = campaigns.filter(c => (a.campaigns || []).includes(c.id));
+    const linked = campaigns.filter(c => c.audience_id === a.id || (a.campaigns || []).includes(c.id));
     const seqLink = linked.length ? '<div style="margin-top:8px;font-size:11px;color:#5C4BE8;">' + linked.length + ' campaign(s) linked</div>' : '';
-    return '<div class="aud-card"><div class="aud-segment">' + escHtml(a.segment || '') + '</div><div class="aud-name">' + escHtml(a.name) + '</div><div class="aud-titles">' + escHtml((a.targetTitles || []).join(', ')) + '</div><div class="aud-tags">' + (a.sector ? '<span class="aud-tag aud-tag-sector">' + escHtml(a.sector) + '</span>' : '') + (a.geo ? '<span class="aud-tag aud-tag-geo">' + escHtml(a.geo) + '</span>' : '') + '</div><div class="aud-angle"><strong>Angle</strong>' + escHtml(a.angle || a.whyTheyMatter || '') + '</div>' + seqLink + '</div>';
+    const lpLink = a.landingPage ? '<div style="margin-top:6px;"><a href="' + escHtml(a.landingPage) + '" target="_blank" style="font-size:11px;color:#5C4BE8;">' + escHtml(a.landingPage) + '</a></div>' : '';
+    return '<div class="aud-card"><div class="aud-segment">' + escHtml(a.segment || '') + '</div><div class="aud-name">' + escHtml(a.name) + '</div><div class="aud-titles">' + escHtml((a.targetTitles || []).join(', ')) + '</div><div class="aud-tags">' + (a.sector ? '<span class="aud-tag aud-tag-sector">' + escHtml(a.sector) + '</span>' : '') + (a.geo ? '<span class="aud-tag aud-tag-geo">' + escHtml(a.geo) + '</span>' : '') + '</div><div class="aud-angle"><strong>Angle</strong>' + escHtml(a.angle || a.whyTheyMatter || '') + '</div>' + lpLink + seqLink + '</div>';
   }
 
   function renderAudList(audiences, campaigns) {
@@ -700,7 +745,8 @@
     const pending  = campaigns.filter(c => c.status === 'pending').length;
     const approved = campaigns.filter(c => c.status === 'approved').length;
     const rejected = campaigns.filter(c => c.status === 'rejected').length;
-    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns folder</span><span class="info-value">campaigns/</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>Audience profiles</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
+    const drafting = campaigns.filter(c => c.status === 'drafting').length;
+    el.innerHTML = '<div class="info-grid"><div class="info-card"><div class="info-card-title">Campaign summary</div><div class="info-row"><span class="info-label">Total</span><span class="info-value">' + campaigns.length + '</span></div><div class="info-row"><span class="info-label">In progress</span><span class="info-value">' + drafting + '</span></div><div class="info-row"><span class="info-label">Awaiting review</span><span class="info-value">' + pending + '</span></div><div class="info-row"><span class="info-label">Approved</span><span class="info-value purple">' + approved + '</span></div><div class="info-row"><span class="info-label">Flagged</span><span class="info-value">' + rejected + '</span></div></div><div class="info-card"><div class="info-card-title">Portal info</div><div class="info-row"><span class="info-label">Venture</span><span class="info-value">ReRev Labs</span></div><div class="info-row"><span class="info-label">Reviewer</span><span class="info-value">Keyona Meeks</span></div><div class="info-row"><span class="info-label">Repo</span><span class="info-value"><a href="https://github.com/keyona-rerev/rerev-comms-review" target="_blank" style="color:#5C4BE8;">rerev-comms-review</a></span></div><div class="info-row"><span class="info-label">Campaigns folder</span><span class="info-value">campaigns.json</span></div></div></div><table class="stack-table"><thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>campaigns.json</td><td>All campaign records with contacts and email bodies</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>audiences.json</td><td>ICP audience profiles with landing pages</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>initiatives.json</td><td>Active ReRev initiatives</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>content_formats.json</td><td>Workshop and keynote formats</td><td><span class="status-pill status-active">Active</span></td></tr><tr><td>reports/week-N.json</td><td>Weekly progress reports</td><td><span class="status-pill status-planned">Add as needed</span></td></tr></tbody></table>';
   }
 
   function escHtml(str) {
